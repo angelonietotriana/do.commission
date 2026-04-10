@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -16,6 +15,11 @@ namespace Do.Commission_.Auth
 
         private readonly IConfiguration _configuration = configuration;
 
+        /// <summary>
+        /// Genera un token JWT para el usuario indicado usando la configuración actual de la aplicación.
+        /// </summary>
+        /// <param name="user">Usuario autenticado para el que se creará el token.</param>
+        /// <returns>La respuesta con el token generado, el rol del usuario y su fecha de expiración.</returns>
         public AuthResponse GenerateToken(AuthUser user)
         {
             var expiresAtUtc = DateTime.UtcNow.AddHours(GetExpirationHours());
@@ -47,6 +51,11 @@ namespace Do.Commission_.Auth
             };
         }
 
+        /// <summary>
+        /// Valida un token JWT y devuelve el usuario autenticado si el token es correcto.
+        /// </summary>
+        /// <param name="token">Token JWT recibido en la solicitud.</param>
+        /// <returns>El usuario autenticado o <see langword="null"/> si el token es inválido o expiró.</returns>
         public ClaimsPrincipal? ValidateToken(string token)
         {
             try

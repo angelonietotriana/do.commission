@@ -7,4 +7,5 @@ public class Employee
     public int PositionId { get; set; }
     public decimal Salary { get; set; }
 
+    public ICollection<PositionHistory> PositionHistories { get; set; } = [];
 }

@@ -22,5 +22,7 @@ public sealed class EmployeeDto
     [JsonConverter(typeof(OneDecimalConverter))]
     public decimal Commission { get; set; }
 
-
+    [JsonPropertyName("position_history")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.Never)]
+    public ICollection<EmployeePositionHistoryDto?> PositionHistories { get; set; } = [];
 }

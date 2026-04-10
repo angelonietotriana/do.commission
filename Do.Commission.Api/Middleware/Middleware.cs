@@ -15,6 +15,13 @@ namespace Do.Commission_.Middleware
 
         private readonly RequestDelegate _next = next;
 
+        /// <summary>
+        /// Valida el token JWT y el rol del usuario antes de permitir el acceso a los endpoints de empleados.
+        /// También valida que el identificador enviado en los GET por id sea un número válido mayor que cero.
+        /// </summary>
+        /// <param name="context">Contexto HTTP de la solicitud actual.</param>
+        /// <param name="jwtTokenService">Servicio encargado de validar el token recibido.</param>
+        /// <returns>Una tarea asincrónica que finaliza cuando la solicitud es procesada.</returns>
         public async Task InvokeAsync(HttpContext context, JwtTokenService jwtTokenService)
         {
             if (context.Request.Path.StartsWithSegments(BasePath))

@@ -21,6 +21,7 @@ public class EmployeesControllerTests
         using var context = CreateContext(
             new Employee { Id = 1, Name = "Ana", PositionId = 1, Salary = 1000m },
             new Employee { Id = 2, Name = "Luis", PositionId = 2, Salary = 2000m });
+        SeedHistoryData(context);
 
         var controller = CreateController(context);
 
@@ -32,12 +33,15 @@ public class EmployeesControllerTests
         Assert.Equal(2, employees.Count);
         Assert.Equal("Ana", employees[0].Name);
         Assert.Equal("Luis", employees[1].Name);
+        Assert.NotEmpty(employees[0].PositionHistories);
+        Assert.Contains(employees[0].PositionHistories, history => history is not null && history.DepartmentName == "Ventas" && history.ProjectName == "Proyecto A");
     }
 
     [Fact]
     public async Task GetById_WhenEmployeeExists_ReturnsOk()
     {
         using var context = CreateContext(new Employee { Id = 7, Name = "Ana", PositionId = 1, Salary = 1000m });
+        SeedHistoryData(context, 7);
         var controller = CreateController(context);
 
         var result = await controller.GetById(7);
@@ -47,6 +51,8 @@ public class EmployeesControllerTests
 
         Assert.Equal(7, employee.Id);
         Assert.Equal("Ana", employee.Name);
+        Assert.NotEmpty(employee.PositionHistories);
+        Assert.Contains(employee.PositionHistories, history => history is not null && history.DepartmentId == 1 && history.ProjectId == 1);
     }
 
     [Fact]
@@ -177,7 +183,7 @@ public class EmployeesControllerTests
     private static EmployeesController CreateController(MysqlDbContext context)
     {
         var repository = new EmployeeRepository(context);
-        var service = new EmployeesService(repository, new StubCommissionsService(), CreateMapper());
+        var service = new EmployeesService(repository, CreateMapper());
 
         return new EmployeesController(service);
     }
@@ -199,15 +205,28 @@ public class EmployeesControllerTests
         return context;
     }
 
+    private static void SeedHistoryData(MysqlDbContext context, int employeeId = 1)
+    {
+        context.Departments.Add(new Department { Id = 1, Name = "Ventas" });
+        context.Projects.Add(new Project { Id = 1, Name = "Proyecto A" });
+        context.PositionHistory.Add(new PositionHistory
+        {
+            Id = 1,
+            EmployeeId = employeeId,
+            PositionId = 1,
+            DepartmentId = 1,
+            ProjectId = 1,
+            StartDate = DateTime.UtcNow.AddDays(-10),
+            Description = "Historial 1",
+            ReasonChange = "Ingreso"
+        });
+        context.SaveChanges();
+    }
+
     private static IMapper CreateMapper()
     {
         var config = new TypeAdapterConfig();
         config.Apply(new ConfigMapping());
         return new Mapper(config);
-    }
-
-    private sealed class StubCommissionsService : ICommissionsService
-    {
-        public decimal CalculateFor(EmployeeDtoIn employeeDto) => 0m;
     }
 }

@@ -1,5 +1,3 @@
-
-
 using Do.Commission.Infrastructure.Model;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,5 +9,7 @@ public class MysqlDbContext : DbContext
 
     public DbSet<Employee> Employees { get; set; } = null!;
     public DbSet<Position> Positions { get; set; } = null!;
-    public DbSet<PositionHistory> PositionHistory { get; set; }
+    public DbSet<PositionHistory> PositionHistory { get; set; } = null!;
+    public DbSet<Department> Departments { get; set; } = null!;
+    public DbSet<Project> Projects { get; set; } = null!;
 }
