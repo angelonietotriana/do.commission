@@ -1,6 +1,6 @@
 # Documentación funcional y técnica del proyecto `Do.Commission`
 
-## Rol de documentador
+## Enfoque
 
 Este documento se redacta con enfoque de análisis funcional y técnico. Su objetivo es explicar, de forma clara y profesional, 
 cómo está organizado el sistema, cómo se modela la información, cómo se construye la base de datos con enfoque `Code First`, 
