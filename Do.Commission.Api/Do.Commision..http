@@ -1,0 +1,6 @@
+@Do.Commission__HostAddress = http://localhost:5152
+
+GET {{Do.Commission__HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
