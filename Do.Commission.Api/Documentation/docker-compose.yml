@@ -1,0 +1,27 @@
+services:
+  mysql:
+    build: 
+      context: .
+      dockerfile: Dockerfile_mysql
+    container_name: commissions
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: commissions_db
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test_123456
+      MYSQL_ROOT_HOST: '%'  # needs to be enclosed with quotes
+    volumes:
+      - ./schemas:/var/lib/mysql:rw
+    networks:
+      mysql_network: 
+        aliases:
+          - mysql_host 
+volumes:
+  mysql_data:
+networks:
+  mysql_network: 
+    name: mysql_network
+    driver: bridge

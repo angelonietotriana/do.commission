@@ -1,0 +1,34 @@
+INSERT INTO commissions_db.Employees
+(Id, Name, PositionId, Salary)
+VALUES(16289564, 'Angelo Nieto Triana', 1, 1000000);
+
+INSERT INTO commissions_db.Employees
+(Id, Name, PositionId, Salary)
+VALUES(31300500, 'Maria Elena Moncada Martinez', 2, 1000000);
+
+// departamentos
+
+INSERT INTO commissions_db.Departments
+(Name)
+VALUES('Tecnologia');
+
+INSERT INTO commissions_db.Departments
+(Name)
+VALUES('Direccion');
+
+// proyectos
+
+INSERT INTO commissions_db.Projects
+(Name)
+VALUES('nuevos clientes');
+
+INSERT INTO commissions_db.Projects
+(Name)
+VALUES('campañas medicas');
+
+
+// para el historial
+
+INSERT INTO commissions_db.PositionHistory
+(EmployeeId, PositionId, StartDate, EndDate, Description, ReasonChange, DepartmentId, ProjectId)
+VALUES(16289564, 1, STR_TO_DATE('01/01/2022', '%d/%m/%Y'),STR_TO_DATE('10/12/2021', '%d/%m/%Y') , 'Líder desarrollo', 'Promosión' , 1, 1);
