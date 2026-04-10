@@ -311,6 +311,13 @@ flowchart TD
 - contexto en `Do.Commission.Infrastructure/MysqlDbContext.cs`
 - migraciones en `Do.Commission.Infrastructure/Migrations`
 
+Para lanzar el Add-grantion, se debe selecionar la consola administradora de paquetes y ejecutar el comando:
+```bash
+Add-Migration NombreDeLaMigracion
+luego despues de ser creada la migracion se ejecuta el comando:
+Update-Database para actualizar la base de datos con la nueva migración creada.
+```
+
 ---
 
 ## 6. Cálculo de comisiones: decisión de diseño

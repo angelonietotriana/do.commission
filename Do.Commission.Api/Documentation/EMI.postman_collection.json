@@ -1,0 +1,317 @@
+{
+  "info": {
+    "_postman_id": "f699435a-f043-4a86-93be-fb7131b5e44b",
+    "name": "EMI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "2213649",
+    "_collection_link": "https://go.postman.co/collection/2213649-f699435a-f043-4a86-93be-fb7131b5e44b?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "GetEmployees",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5152/api/employees",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5152",
+          "path": [
+            "api",
+            "employees"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "16289564",
+              "type": "text",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GetEmployee",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbjEiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW5pc3RyYWRvciIsImp0aSI6Ijg0YWRiMzgxLWRiYzktNDFkYi1hNWJmLWNiNzYyZjkzMjc1ZSIsImV4cCI6MTc3NTgyNzg2NCwiaXNzIjoiRG8uQ29tbWlzc2lvbi5BcGkiLCJhdWQiOiJEby5Db21taXNzaW9uLkNsaWVudCJ9.MeAX9bgXaxiAkFbO3-CSp17pJlrBbPZETxpUf59SZmU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5152/api/Employees/16289564",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5152",
+          "path": [
+            "api",
+            "Employees",
+            "16289564"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CreateEmployee",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"documento\":1000164440,\r\n    \"name\":\"carlo magno\",\r\n    \"position\":2,\r\n    \"salary\":\"200000\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5152/api/employees",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5152",
+          "path": [
+            "api",
+            "employees"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "actualizaEmpleado",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\":\"Carlo Magno 2\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5152/api/employees/1000164440",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5152",
+          "path": [
+            "api",
+            "employees",
+            "1000164440"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "RegistrarAdministrador",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userName\": \"admin1\",\n  \"password\": \"123456\",\n  \"role\": \"Administrador\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5152/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5152",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "registrarUsuarioNormal",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userName\": \"user1\",\n  \"password\": \"123456\",\n  \"role\": \"Usuario\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:5001/api/auth/register",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "5001",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "loginAdmin",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userName\": \"admin1\",\n  \"password\": \"123456\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:5001/api/auth/login",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "5001",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LoginUsuarioNormal",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userName\": \"user1\",\n  \"password\": \"123456\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:5001/api/auth/login",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "5001",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        },
+        "description": "Generated from cURL: curl --location 'https://localhost:5001/api/auth/login' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"userName\": \"user1\",\n  \"password\": \"123456\"\n}'"
+      },
+      "response": []
+    },
+    {
+      "name": "EmpleadosPorDepartamento",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer TU_TOKEN_AQUI"
+          }
+        ],
+        "url": {
+          "raw": "https://localhost:5001/api/employees/departments/1/with-projects",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "5001",
+          "path": [
+            "api",
+            "employees",
+            "departments",
+            "1",
+            "with-projects"
+          ]
+        },
+        "description": "Generated from cURL: curl --location 'https://localhost:5001/api/employees/departments/1/with-projects' \\\n--header 'Authorization: Bearer TU_TOKEN_AQUI'"
+      },
+      "response": []
+    }
+  ]
+}
